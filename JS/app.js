@@ -22,31 +22,56 @@ const displayCategories = (categories) => {
 };
 loadCategories();
 
-const categoryDetails = async (id) => {
-  const url = "https://openapi.programming-hero.com/api/news/category/'${id}'";
+const categoryDetails = async (category_id) => {
+  const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
   const res = await fetch(url);
   const data = await res.json();
-  console.log(data);
+  // console.log(data);
   newsCard(data.data);
 };
 
 const newsCard = (cards) => {
   const newsContainer = document.getElementById("news-container");
+  newsContainer.textContent = "";
   cards.forEach((card) => {
+    console.log(card);
     const createNewsDiv = document.createElement("div");
-    createNewsDiv.classList.add("card mb-3 newsCard");
+    createNewsDiv.classList.add("w-100");
     createNewsDiv.innerHTML = `
-    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="..." class="img-fluid rounded-start" alt="...">
+    <div class="col g-0  d-flex gap-4 ">
+                        <div class="col-md-4 gap-4 ">
+                            <img src="${
+                              card.image_url
+                            }" class="img-fluid rounded-start" alt="...">
                         </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to
-                                    additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <div class="col-md-7">
+                            <div class="card-body ">
+                                <h5 class="card-title">${card.title}</h5>
+                              <p class="card-text">${
+                                card.details.length > 280
+                                  ? card.details.slice(0, 280) + "..."
+                                  : card.details
+                              }</p>
+                            
+                            
+                            <div class ="d-flex gap-5">
+
+                           <div class="d-flex gap-3">  <img src="${
+                             card.author.img
+                           }" class="img-container rounded " alt="..." style="width:35px; heigth:35px">
+                         <div> <h6 > ${card.author.name} </h6>
+                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p></div>
+                         </div>
+
+
+                            <div>
+                            <p>Total View:${card.total_view}</p>
+                            
+                            </div>
+                            </div>
+                           
+                    
+                             
                             </div>
                         </div>
                     </div>
