@@ -126,7 +126,7 @@ const showDetail = (details) => {
   modaTitle.innerText = details.title;
   const modaDes = document.getElementById("modalDescription");
   modaDes.innerHTML = `
-  <img src='${details.thumbnail_url}'/>
+  <img src='${details.thumbnail_url}'/> 
   <p>${details.details}</p>
  
   <div class="d-flex gap-3">  
