@@ -8,14 +8,11 @@ const loadCategories = async () => {
 };
 
 const displayCategories = (categories) => {
-  // console.log(categories);
-
   const categoryContainer = document.getElementById("category-container");
 
   categories.forEach((category) => {
-    // console.log(category);
-
     const createList = document.createElement("li");
+
     createList.innerHTML = `
     <a onclick="categoryDetails('${category.category_id}')" class=' text-decoration-none fw-bold' href='#'>${category.category_name}
     `;
@@ -57,8 +54,6 @@ const newsCard = (cards) => {
   }
 
   cards.forEach((card) => {
-    // console.log(card);
-
     const createNewsDiv = document.createElement("div");
     createNewsDiv.classList.add("w-100");
     createNewsDiv.innerHTML = `
@@ -114,12 +109,10 @@ categoryDetails();
 
 // news details
 const loadDetails = async (news_id) => {
-  // console.log(_id);
   const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
   const res = await fetch(url);
   const data = await res.json();
   showDetail(data.data[0]);
-  // console.log(data.data[0]);
 };
 
 const showDetail = (details) => {
@@ -161,3 +154,4 @@ const spinnerToggle = (ifLoading) => {
     spinnerField.classList.add("d-none");
   }
 };
+categoryDetails("08");
