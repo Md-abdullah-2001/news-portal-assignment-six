@@ -8,11 +8,13 @@ const loadCategories = async () => {
 };
 
 const displayCategories = (categories) => {
-  console.log(categories);
+  // console.log(categories);
+
   const categoryContainer = document.getElementById("category-container");
 
   categories.forEach((category) => {
     // console.log(category);
+
     const createList = document.createElement("li");
     createList.innerHTML = `
     <a onclick="categoryDetails('${category.category_id}')" class=' text-decoration-none fw-bold' href='#'>${category.category_name}
@@ -31,8 +33,15 @@ const categoryDetails = async (category_id) => {
 };
 
 const newsCard = (cards) => {
+  const notFoundMsg = document.getElementById("none-msg");
+  if (cards.length === 0) {
+    notFoundMsg.classList.remove("d-none");
+  } else {
+    notFoundMsg.classList.add("d-none");
+  }
   const newsContainer = document.getElementById("news-container");
   newsContainer.textContent = "";
+
   cards.forEach((card) => {
     console.log(card);
     const createNewsDiv = document.createElement("div");
