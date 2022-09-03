@@ -25,6 +25,9 @@ const displayCategories = (categories) => {
 loadCategories();
 
 const categoryDetails = async (category_id) => {
+  // spinner start here
+  spinnerToggle(true);
+
   const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
   const res = await fetch(url);
   const data = await res.json();
@@ -104,6 +107,8 @@ const newsCard = (cards) => {
     `;
     newsContainer.appendChild(createNewsDiv);
   });
+  // spinner start here
+  spinnerToggle(false);
 };
 categoryDetails();
 
@@ -145,4 +150,14 @@ const showDetail = (details) => {
 </div>
   
   `;
+};
+
+// spinner function to show it or not
+const spinnerToggle = (ifLoading) => {
+  const spinnerField = document.getElementById("spinner-loader");
+  if (ifLoading == true) {
+    spinnerField.classList.remove("d-none");
+  } else {
+    spinnerField.classList.add("d-none");
+  }
 };
