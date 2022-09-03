@@ -79,7 +79,12 @@ const newsCard = (cards) => {
                            <img src="${
                              card.author.img
                            }" class="img-container rounded " alt="..." style="width:35px; heigth:35px">
-                         <div> <h6 > ${card.author.name} </h6>
+                         <div> <h6 > ${
+                           card.author.name === null ||
+                           card.author.name.length === 0
+                             ? "Not found"
+                             : card.author.name
+                         } </h6>
                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p></div>
                          </div>
 
@@ -129,7 +134,7 @@ const showDetail = (details) => {
     details.author.img
   }" class="img-container rounded " alt="..." style="width:35px; heigth:35px">
 <div> <h6 > ${
-    details.author.name === null
+    details.author.name === null || details.author.name.length === 0
       ? "No name found for author"
       : details.author.name
   } </h6>
