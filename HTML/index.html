@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Front-News</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 </head>
@@ -15,14 +15,10 @@
         <!-- first navbar  -->
         <nav class="navbar navbar-expand-lg bg-light container">
             <div class="container-fluid">
-                <h3 class="navbar-brand text-promary fw-bold">Front-Line</h3>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <h3 class="navbar-brand text-promary fw-bold">Front-News</h3>
+
                 <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
-                    <div class="navbar-nav ">
+                    <div class="navbar-nav d-flex flex-row">
 
                         <a class="nav-link text-danger fw-bold mx-4" href="#">News</a>
                         <a class="nav-link fw-bold" href="/HTML/blog.html">Blog</a>
@@ -34,36 +30,65 @@
         <hr class="container h-5">
         <!-- categories section  -->
         <section class="container mt-4">
+
+
             <ul id="category-container" class="d-flex justify-content-between list-unstyled ">
-                <a href="#" class="fw-bold"">Home</a>
+
             </ul>
 
         </section>
+
+        <!-- show the number of news on the category  -->
+        <section>
+            <div class="bg-white container p-3 newsNumber mb-5" id="newsNumber"></div>
+        </section>
+
+
+
     </header>
 
 
-        <!-- news card section  -->
-        <main class=" container">
+    <!-- news card section  -->
+    <main class=" container">
 
-                    <div class="row row-cols-1 row-cols-md-2 gap-3" id="news-container">
+        <div class="row row-cols-1 row-cols-md-2 gap-3" id="news-container">
 
 
+
+        </div>
+
+    </main>
+
+    <!-- no result found section  -->
+
+    <section>
+        <div id="none-msg" class="text-center mt-5 d-none">
+            <h1 class="text-danger">No similar result Found!!</h1>
+        </div>
+    </section>
+
+
+    <!-- modal -->
+    <section>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="modalDescription">
 
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-
-
-
-                    <!-- no result found section  -->
-
-                    </main>
-
-
-                    <section>
-                        <div id="none-msg" class="text-center mt-5 d-none">
-                            <h1 class="text-danger">No similar result Found!!</h1>
-                        </div>
-                    </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 
@@ -71,14 +96,10 @@
 
 
 
-
-
-
-
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-                        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-                        crossorigin="anonymous"></script>
-                    <script src="/JS/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <script src="/JS/app.js"></script>
 </body>
 
 </html>

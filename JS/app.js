@@ -28,22 +28,34 @@ const categoryDetails = async (category_id) => {
   const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
   const res = await fetch(url);
   const data = await res.json();
-  // console.log(data);
+
   newsCard(data.data);
 };
 
 const newsCard = (cards) => {
+  // number of news found
+  const newsNumber = document.getElementById("newsNumber");
+  newsNumber.textContent = "";
+  const createNumField = document.createElement("div");
+
+  createNumField.innerHTML = `
+   <h4> ${cards.length > 0 ? cards.length : "No"} News Items found</h4>
+   `;
+  newsNumber.appendChild(createNumField);
+
+  const newsContainer = document.getElementById("news-container");
+  newsContainer.textContent = "";
+
   const notFoundMsg = document.getElementById("none-msg");
   if (cards.length === 0) {
     notFoundMsg.classList.remove("d-none");
   } else {
     notFoundMsg.classList.add("d-none");
   }
-  const newsContainer = document.getElementById("news-container");
-  newsContainer.textContent = "";
 
   cards.forEach((card) => {
-    console.log(card);
+    // console.log(card);
+
     const createNewsDiv = document.createElement("div");
     createNewsDiv.classList.add("w-100");
     createNewsDiv.innerHTML = `
@@ -65,7 +77,8 @@ const newsCard = (cards) => {
                             
                             <div class ="d-flex gap-5">
 
-                           <div class="d-flex gap-3">  <img src="${
+                           <div class="d-flex gap-3">  
+                           <img src="${
                              card.author.img
                            }" class="img-container rounded " alt="..." style="width:35px; heigth:35px">
                          <div> <h6 > ${card.author.name} </h6>
@@ -77,6 +90,10 @@ const newsCard = (cards) => {
                             <p>Total View:${card.total_view}</p>
                             
                             </div>
+                          <button onclick="loadDetails('${
+                            card._id
+                          }')" type="button" class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Details</button>
+                            
                             </div>
                            
                     
@@ -89,3 +106,43 @@ const newsCard = (cards) => {
   });
 };
 categoryDetails();
+
+// news details
+const loadDetails = async (news_id) => {
+  // console.log(_id);
+  const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  showDetail(data.data[0]);
+  // console.log(data.data[0]);
+};
+
+const showDetail = (details) => {
+  console.log(details);
+  const modaTitle = document.getElementById("exampleModalLabel");
+  modaTitle.innerText = details.title;
+  const modaDes = document.getElementById("modalDescription");
+  modaDes.innerHTML = `
+  <img src='${details.thumbnail_url}'/>
+  <p>${details.details}</p>
+ 
+  <div class="d-flex gap-3">  
+  <img src="${
+    details.author.img
+  }" class="img-container rounded " alt="..." style="width:35px; heigth:35px">
+<div> <h6 > ${
+    details.author.name === null
+      ? "No name found for author"
+      : details.author.name
+  } </h6>
+
+</div>
+<div>
+<p>Total View:${
+    details.total_view === null ? "No views" : details.total_view
+  }</p>
+
+</div>
+  
+  `;
+};

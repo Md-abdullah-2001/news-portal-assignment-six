@@ -1,3 +1,10 @@
-/* .newsCard{
-    max-width: 90%;
-} */
+#newsNumber{
+   background-color: rgb(154, 152, 150);
+   border: 1px solid rgb(193, 250, 193);
+   margin-top: 5px;
+}
+#category-container{
+padding:15px 20px 15px 20px ;
+    border: 1px solid rgb(162, 249, 162);
+    margin-top: 5px;
+}
