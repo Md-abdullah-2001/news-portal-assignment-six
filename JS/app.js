@@ -15,7 +15,7 @@ const displayCategories = (categories) => {
     // console.log(category);
     const createList = document.createElement("li");
     createList.innerHTML = `
-    <a onclick="categoryDetails('${category.category_id}')" class='text-decoration-none fw-bold' href='#'>${category.category_name}
+    <a onclick="categoryDetails('${category.category_id}')" class=' text-decoration-none fw-bold' href='#'>${category.category_name}
     `;
     categoryContainer.appendChild(createList);
   });
