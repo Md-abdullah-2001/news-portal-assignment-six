@@ -39,7 +39,7 @@ const newsCard = (cards) => {
   const createNumField = document.createElement("div");
 
   createNumField.innerHTML = `
-   <h4> ${cards.length > 0 ? cards.length : "No"} News Items found</h4>
+   <h4> ${cards.length > 0 ? cards.length : "0"} News Items found</h4>
    `;
   newsNumber.appendChild(createNumField);
 
